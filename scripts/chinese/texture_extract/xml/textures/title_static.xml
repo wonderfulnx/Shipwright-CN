@@ -1,0 +1,60 @@
+<Root>
+    <File Name="title_static" Segment="1">
+
+        <Texture Name="gFileSelSOUNDCHITex" OutName="SOUND_chi" Format="ia8" Width="64" Height="16" Offset="0x8C00"/>
+
+        <Texture Name="gFileSelENDButtonCHITex" OutName="end_button_chi" Format="ia16" Width="44" Height="16" Offset="0x21680"/>
+
+        <Texture Name="gFileSelNoFileToCopyCHITex" OutName="no_file_to_copy_chi" Format="ia8" Width="128" Height="16" Offset="0x2AF00"/>
+        <Texture Name="gFileSelNoFileToEraseCHITex" OutName="no_file_to_erase_chi" Format="ia8" Width="128" Height="16" Offset="0x2B700"/>
+        <Texture Name="gFileSelNoEmptyFileCHITex" OutName="no_empty_file_chi" Format="ia8" Width="128" Height="16" Offset="0x2BF00"/>
+        <Texture Name="gFileSelFileEmptyCHITex" OutName="file_empty_chi" Format="ia8" Width="128" Height="16" Offset="0x2C700"/>
+        <Texture Name="gFileSelFileInUseCHITex" OutName="file_in_use_chi" Format="ia8" Width="128" Height="16" Offset="0x2CF00"/>
+
+        <Texture Name="gFileSelCopyWhichFileCHITex" OutName="copy_which_file_chi" Format="ia8" Width="128" Height="16" Offset="0x2D700"/>
+        <Texture Name="gFileSelCopyToWhichFileCHITex" OutName="copy_to_which_file_chi" Format="ia8" Width="128" Height="16" Offset="0x2DF00"/>
+        <Texture Name="gFileSelAreYouSureCHITex" OutName="are_you_sure_chi" Format="ia8" Width="128" Height="16" Offset="0x2E700"/>
+        <Texture Name="gFileSelFileCopiedCHITex" OutName="file_copied_chi" Format="ia8" Width="128" Height="16" Offset="0x2EF00"/>
+
+        <Texture Name="gFileSelPleaseSelectAFileCHITex" OutName="please_select_a_file_chi" Format="ia8" Width="128" Height="16" Offset="0x2F700"/>
+        <Texture Name="gFileSelOpenThisFileCHITex" OutName="open_this_file_chi" Format="ia8" Width="128" Height="16" Offset="0x2FF00"/>
+
+        <Texture Name="gFileSelEraseWhichFileCHITex" OutName="erase_which_file_chi" Format="ia8" Width="128" Height="16" Offset="0x30700"/>
+        <Texture Name="gFileSelAreYouSure2CHITex" OutName="are_you_sure_chi_2" Format="ia8" Width="128" Height="16" Offset="0x30F00"/>
+        <Texture Name="gFileSelFileErasedCHITex" OutName="file_erased_chi" Format="ia8" Width="128" Height="16" Offset="0x31700"/>
+
+        <Texture Name="gFileSelOptionsCHITex" OutName="options_chi" Format="ia8" Width="128" Height="16" Offset="0x31F00"/>
+
+        <Texture Name="gFileSelNameCHITex" OutName="name_chi" Format="ia8" Width="56" Height="16" Offset="0x32700"/>
+
+        <Texture Name="gFileSelSurroundCHITex" OutName="surround_chi" Format="ia8" Width="48" Height="16" Offset="0x32A80"/>
+        <Texture Name="gFileSelHeadsetCHITex" OutName="headset_chi" Format="ia8" Width="48" Height="16" Offset="0x32D80"/>
+        <Texture Name="gFileSelMonoCHITex" OutName="mono_chi" Format="ia8" Width="48" Height="16" Offset="0x33080"/>
+        <Texture Name="gFileSelStereoCHITex" OutName="stereo_chi" Format="ia8" Width="48" Height="16" Offset="0x33380"/>
+
+        <Texture Name="gFileSelLTargetingCHITex" OutName="l_targeting_chi" Format="ia8" Width="64" Height="16" Offset="0x33680"/>
+        <Texture Name="gFileSelSwitchCHITex" OutName="switch_chi" Format="ia8" Width="48" Height="16" Offset="0x33A80"/>
+        <Texture Name="gFileSelHoldCHITex" OutName="hold_chi" Format="ia8" Width="48" Height="16" Offset="0x33D80"/>
+
+        <Texture Name="gFileSelControlsCHITex" OutName="controls_chi" Format="ia8" Width="144" Height="16" Offset="0x34080"/>
+
+        <Texture Name="gFileSelCheckBrightnessCHITex" OutName="check_brightness_chi" Format="ia8" Width="96" Height="16" Offset="0x34980"/>
+
+        <Texture Name="gFileSelCopyButtonCHITex" OutName="copy_button_chi" Format="ia16" Width="64" Height="16" Offset="0x34F80"/>
+
+        <Texture Name="gFileSelFile1ButtonCHITex" OutName="file_1_button_chi" Format="ia16" Width="64" Height="16" Offset="0x35780"/>
+        <Texture Name="gFileSelFile2ButtonCHITex" OutName="file_2_button_chi" Format="ia16" Width="64" Height="16" Offset="0x35F80"/>
+        <Texture Name="gFileSelFile3ButtonCHITex" OutName="file_3_button_chi" Format="ia16" Width="64" Height="16" Offset="0x36780"/>
+
+        <Texture Name="gFileSelYesButtonCHITex" OutName="yes_button_chi" Format="ia16" Width="64" Height="16" Offset="0x36F80"/>
+
+        <Texture Name="gFileSelEraseButtonCHITex" OutName="erase_button_chi" Format="ia16" Width="64" Height="16" Offset="0x37780"/>
+
+        <Texture Name="gFileSelOptionsButtonCHITex" OutName="options_button_chi" Format="ia16" Width="64" Height="16" Offset="0x37F80"/>
+
+        <Texture Name="gFileSelQuitButtonCHITex" OutName="quit_button_chi" Format="ia16" Width="64" Height="16" Offset="0x38780"/>
+
+        <!-- This one is not used -->
+        <!-- <Texture Name="gFileSelSaveXCHITex" OutName="save_x_chi" Format="i4" Width="32" Height="16" Offset="0x38F80"/> -->
+    </File>
+</Root>

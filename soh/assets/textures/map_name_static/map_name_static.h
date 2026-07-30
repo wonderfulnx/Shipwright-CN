@@ -516,6 +516,5 @@ static const ALIGN_ASSET(2) char gZorasFountainPositionNameCHITex[] = dgZorasFou
 
 #define dgZorasRiverPositionNameCHITex "__OTR__textures/map_name_static/gZorasRiverPositionNameCHITex"
 static const ALIGN_ASSET(2) char gZorasRiverPositionNameCHITex[] = dgZorasRiverPositionNameCHITex;
-
 // #endregion
 #endif // TEXTURES_MAP_NAME_STATIC_H

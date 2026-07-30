@@ -30,4 +30,15 @@ static const ALIGN_ASSET(2) char sTriforceDL[] = dsTriforceDL;
 #define dsPresentedByNintendoDL "__OTR__overlays/ovl_End_Title/sPresentedByNintendoDL"
 static const ALIGN_ASSET(2) char sPresentedByNintendoDL[] = dsPresentedByNintendoDL;
 
+
+// #region SOH [Chinese]
+#define dsOcarinaOfTimeCHITex "__OTR__overlays/ovl_End_Title/sOcarinaOfTimeCHITex"
+static const ALIGN_ASSET(2) char sOcarinaOfTimeCHITex[] = dsOcarinaOfTimeCHITex;
+
+#define dsTheEndCHITex "__OTR__overlays/ovl_End_Title/sTheEndCHITex"
+static const ALIGN_ASSET(2) char sTheEndCHITex[] = dsTheEndCHITex;
+
+#define dsTheLegendOfZeldaCHITex "__OTR__overlays/ovl_End_Title/sTheLegendOfZeldaCHITex"
+static const ALIGN_ASSET(2) char sTheLegendOfZeldaCHITex[] = dsTheLegendOfZeldaCHITex;
+// #endregion
 #endif // OVERLAYS_OVL_END_TITLE_H

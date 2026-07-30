@@ -738,7 +738,7 @@ static void* sSavePromptNoChoiceTexs[] = {
     (void*)gPauseNoGERTex,
     (void*)gPauseNoFRATex,
     (void*)gPauseNoENGTex, // LANGUAGE_JPN — fallback to English
-    (void*)gPauseNoENGTex, // LANGUAGE_CHI — fallback to English
+    (void*)gPauseNoCHITex, // LANGUAGE_CHI
 };
 
 void BossRush_OnVanillaBehaviorHandler(GIVanillaBehavior id, bool* should, va_list originalArgs) {

@@ -1600,9 +1600,9 @@ static void* sTitleLabels[5][9] = {
     { gFileSelPleaseSelectAFileJPNTex, gFileSelOpenThisFileJPNTex, gFileSelWhichFile1JPNTex,
       gFileSelCopyToWhichFileJPNTex, gFileSelAreYouSureJPNTex, gFileSelFileCopiedJPNTex, gFileSelEraseWhichFileJPNTex,
       gFileSelAreYouSure2JPNTex, gFileSelFileErasedJPNTex },
-    { gFileSelPleaseSelectAFileENGTex, gFileSelOpenThisFileENGTex, gFileSelCopyWhichFileENGTex,
-      gFileSelCopyToWhichFileENGTex, gFileSelAreYouSureENGTex, gFileSelFileCopiedENGTex, gFileSelEraseWhichFileENGTex,
-      gFileSelAreYouSure2ENGTex, gFileSelFileErasedENGTex }, // LANGUAGE_CHI — fallback to English
+    { gFileSelPleaseSelectAFileCHITex, gFileSelOpenThisFileCHITex, gFileSelCopyWhichFileCHITex,
+      gFileSelCopyToWhichFileCHITex, gFileSelAreYouSureCHITex, gFileSelFileCopiedCHITex, gFileSelEraseWhichFileCHITex,
+      gFileSelAreYouSure2CHITex, gFileSelFileErasedCHITex }, // LANGUAGE_CHI
 };
 
 static void* sWarningLabels[5][5] = {
@@ -1614,8 +1614,8 @@ static void* sWarningLabels[5][5] = {
       gFileSelFileInUseFRATex },
     { gFileSelNoFileToCopyJPNTex, gFileSelNoFileToEraseJPNTex, gFileSelNoEmptyFileJPNTex, gFileSelFileEmptyJPNTex,
       gFileSelFileInUseJPNTex },
-    { gFileSelNoFileToCopyENGTex, gFileSelNoFileToEraseENGTex, gFileSelNoEmptyFileENGTex, gFileSelFileEmptyENGTex,
-      gFileSelFileInUseENGTex }, // LANGUAGE_CHI
+    { gFileSelNoFileToCopyCHITex, gFileSelNoFileToEraseCHITex, gFileSelNoEmptyFileCHITex, gFileSelFileEmptyCHITex,
+      gFileSelFileInUseCHITex }, // LANGUAGE_CHI
 };
 
 static void* sFileButtonTextures[5][3] = {
@@ -1623,7 +1623,7 @@ static void* sFileButtonTextures[5][3] = {
     { gFileSelFile1ButtonGERTex, gFileSelFile2ButtonGERTex, gFileSelFile3ButtonGERTex },
     { gFileSelFile1ButtonFRATex, gFileSelFile2ButtonFRATex, gFileSelFile3ButtonFRATex },
     { gFileSelFile1ButtonJPNTex, gFileSelFile2ButtonJPNTex, gFileSelFile3ButtonJPNTex },
-    { gFileSelFile1ButtonENGTex, gFileSelFile2ButtonENGTex, gFileSelFile3ButtonENGTex }, // LANGUAGE_CHI
+    { gFileSelFile1ButtonCHITex, gFileSelFile2ButtonCHITex, gFileSelFile3ButtonCHITex }, // LANGUAGE_CHI
 };
 
 static void* sActionButtonTextures[5][4] = {
@@ -1631,7 +1631,7 @@ static void* sActionButtonTextures[5][4] = {
     { gFileSelCopyButtonGERTex, gFileSelEraseButtonGERTex, gFileSelYesButtonGERTex, gFileSelQuitButtonGERTex },
     { gFileSelCopyButtonFRATex, gFileSelEraseButtonFRATex, gFileSelYesButtonFRATex, gFileSelQuitButtonFRATex },
     { gFileSelCopyButtonJPNTex, gFileSelEraseButtonJPNTex, gFileSelYesButtonJPNTex, gFileSelQuitButtonJPNTex },
-    { gFileSelCopyButtonENGTex, gFileSelEraseButtonENGTex, gFileSelYesButtonENGTex, gFileSelQuitButtonENGTex }, // LANGUAGE_CHI
+    { gFileSelCopyButtonCHITex, gFileSelEraseButtonCHITex, gFileSelYesButtonCHITex, gFileSelQuitButtonCHITex }, // LANGUAGE_CHI
 };
 
 static void* sOptionsButtonTextures[] = {
@@ -1639,7 +1639,7 @@ static void* sOptionsButtonTextures[] = {
     gFileSelOptionsButtonGERTex,
     gFileSelOptionsButtonENGTex,
     gFileSelOptionsButtonJPNTex,
-    gFileSelOptionsButtonENGTex, // LANGUAGE_CHI
+    gFileSelOptionsButtonCHITex, // LANGUAGE_CHI
 };
 
 const char* FileChoose_GetQuestChooseTitleTexName(Language lang) {
@@ -1769,7 +1769,8 @@ void FileChoose_DrawWindowContents(GameState* thisx) {
                 FileChoose_DrawTextureI8(this->state.gfxCtx, gTitleOcarinaOfTimeTMTextTex, 96, 8, 154, 163, 96, 8, 1024,
                                          1024);
                 FileChoose_DrawImageRGBA32(this->state.gfxCtx, 160, 135, gTitleZeldaShieldLogoMQTex, 160, 160);
-                if (gSaveContext.language == LANGUAGE_JPN || ResourceMgr_GetGameVersion(0) == OOT_NTSC_JP_MQ) {
+                if (gSaveContext.language == LANGUAGE_JPN || gSaveContext.language == LANGUAGE_CHI ||
+                    ResourceMgr_GetGameVersion(0) == OOT_NTSC_JP_MQ) {
                     FileChoose_DrawImageRGBA32(this->state.gfxCtx, 243, 184, gTitleUraLogoTex, 40, 40);
                     gDPPipeSync(POLY_OPA_DISP++);
                     gDPSetCycleType(POLY_OPA_DISP++, G_CYC_2CYCLE);
@@ -1780,7 +1781,8 @@ void FileChoose_DrawWindowContents(GameState* thisx) {
                     gDPSetPrimColor(POLY_OPA_DISP++, 0, 0x80, 170, 255, 255, 255);
                     gDPSetEnvColor(POLY_OPA_DISP++, ZREG(34), 100 + ZREG(35), 255 + ZREG(36), 255);
 
-                    gDPLoadTextureBlock(POLY_OPA_DISP++, gTitleTitleJPNTex, G_IM_FMT_I, G_IM_SIZ_8b, 128, 16, 0,
+                    void* titleTex = (gSaveContext.language == LANGUAGE_CHI) ? gTitleTitleCHITex : gTitleTitleJPNTex;
+                    gDPLoadTextureBlock(POLY_OPA_DISP++, titleTex, G_IM_FMT_I, G_IM_SIZ_8b, 128, 16, 0,
                                         G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP,
                                         G_TX_NOMASK, G_TX_NOLOD);
                     gDPLoadMultiBlock(POLY_OPA_DISP++, gTitleFlameEffectTex, 0x100, 1, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32,
@@ -2724,7 +2726,7 @@ void FileChoose_Main(GameState* thisx) {
         gFileSelControlsGERTex,
         gFileSelControlsFRATex,
         gFileSelControlsJPNTex,
-        gFileSelControlsENGTex, // LANGUAGE_CHI
+        gFileSelControlsCHITex, // LANGUAGE_CHI
     };
     FileChooseContext* this = (FileChooseContext*)thisx;
     Input* input = &this->state.input[0];

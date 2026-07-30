@@ -72,4 +72,9 @@ static const ALIGN_ASSET(2) char gTitleDiskTex[] = dgTitleDiskTex;
 #define dgTitleTitleJPNTex "__OTR__objects/object_mag/gTitleTitleJPNTex"
 static const ALIGN_ASSET(2) char gTitleTitleJPNTex[] = dgTitleTitleJPNTex;
 
+
+// #region SOH [Chinese]
+#define dgTitleTitleCHITex "__OTR__objects/object_mag/gTitleTitleCHITex"
+static const ALIGN_ASSET(2) char gTitleTitleCHITex[] = dgTitleTitleCHITex;
+// #endregion
 #endif // OBJECTS_OBJECT_MAG_H

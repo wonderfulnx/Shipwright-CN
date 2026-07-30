@@ -3818,7 +3818,7 @@ void Interface_DrawActionLabel(GraphicsContext* gfxCtx, void* texture) {
 }
 
 void Interface_DrawItemButtons(PlayState* play) {
-    static void* cUpLabelTextures[] = { gNaviCUpENGTex, gNaviCUpENGTex, gNaviCUpENGTex, gNaviCUpJPTex, gNaviCUpENGTex };
+    static void* cUpLabelTextures[] = { gNaviCUpENGTex, gNaviCUpENGTex, gNaviCUpENGTex, gNaviCUpJPTex, gNaviCUpCHITex };
     static s16 startButtonLeftPos[] = { 132, 130, 130, 132, 132 };
     InterfaceContext* interfaceCtx = &play->interfaceCtx;
     Player* player = GET_PLAYER(play);
@@ -4247,6 +4247,19 @@ void Interface_DrawItemButtons(PlayState* play) {
             gDPSetCombineLERP(OVERLAY_DISP++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0,
                               PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0);
 
+            // #region SOH [Chinese] - Navi C-Up label is 48×16 (wider than ENG/JPN 32×8)
+            if (gSaveContext.language == LANGUAGE_CHI) {
+                gDPLoadTextureBlock_4b(OVERLAY_DISP++, cUpLabelTextures[gSaveContext.language], G_IM_FMT_IA, 48, 16, 0,
+                                       G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
+                                       G_TX_NOLOD, G_TX_NOLOD);
+
+                gSPWideTextureRectangle(OVERLAY_DISP++, (C_Up_BTN_Pos[0] - LabelX_Navi - 8) << 2,
+                                        (C_Up_BTN_Pos[1] + LabelY_Navi - 4) << 2,
+                                        (C_Up_BTN_Pos[0] - LabelX_Navi + 40) << 2,
+                                        (C_Up_BTN_Pos[1] + LabelY_Navi + 12) << 2, G_TX_RENDERTILE, 0, 0, 1 << 10,
+                                        1 << 10);
+            } else {
+            // #endregion
             gDPLoadTextureBlock_4b(OVERLAY_DISP++, cUpLabelTextures[gSaveContext.language], G_IM_FMT_IA, 32, 8, 0,
                                    G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK,
                                    G_TX_NOLOD, G_TX_NOLOD);
@@ -4254,6 +4267,7 @@ void Interface_DrawItemButtons(PlayState* play) {
             gSPWideTextureRectangle(OVERLAY_DISP++, C_Up_BTN_Pos[0] - LabelX_Navi << 2,
                                     C_Up_BTN_Pos[1] + LabelY_Navi << 2, (C_Up_BTN_Pos[0] - LabelX_Navi + 32) << 2,
                                     (C_Up_BTN_Pos[1] + LabelY_Navi + 8) << 2, G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
+            }
         }
 
         sCUpTimer--;

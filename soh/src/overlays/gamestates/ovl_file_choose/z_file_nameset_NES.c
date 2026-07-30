@@ -12,13 +12,14 @@
 // Language Enums were changed between NTSC and PAL, so using (gSaveContext.language == LANGUAGE_ENG)
 // as a substitute for indexing arrays with just gSaveContext.language
 
-#define NTSC_LANGUAGE_INDEX (gSaveContext.language == LANGUAGE_ENG || gSaveContext.language == LANGUAGE_CHI)
+#define NTSC_LANGUAGE_INDEX (gSaveContext.language == LANGUAGE_JPN ? 0 : (gSaveContext.language == LANGUAGE_CHI ? 2 : 1))
 
 // DATA
 
 static void* sNameLabelTexturesNES[] = {
     gFileSelNameJPNTex,
     gFileSelNameENGTex,
+    gFileSelNameCHITex,
 };
 
 static void* sBackspaceEndTexturesNES[] = {
@@ -29,25 +30,25 @@ static void* sBackspaceEndTexturesNES[] = {
 static s16 sBackspaceEndWidthsNES[] = { 44, 44, 28, 28, 44 };
 
 typedef struct {
-    void* texture[2];
+    void* texture[3];
     u16 width;
     u16 height;
-} OptionsMenuTextureInfoNES; // size = 0x8
+} OptionsMenuTextureInfoNES; // size = 0xC
 
 static OptionsMenuTextureInfoNES sOptionsMenuHeaders[] = {
-    { { gFileSelOptionsJPNTex, gFileSelOptionsENGTex }, 128, 16 },
-    { { gFileSelSOUNDENGTex, gFileSelSOUNDENGTex }, 64, 16 },
-    { { gFileSelLTargetingJPNTex, gFileSelLTargetingENGTex }, 64, 16 },
-    { { gFileSelCheckBrightnessJPNTex, gFileSelCheckBrightnessENGNTSCTex }, 96, 16 },
+    { { gFileSelOptionsJPNTex, gFileSelOptionsENGTex, gFileSelOptionsCHITex }, 128, 16 },
+    { { gFileSelSOUNDENGTex, gFileSelSOUNDENGTex, gFileSelSOUNDCHITex }, 64, 16 },
+    { { gFileSelLTargetingJPNTex, gFileSelLTargetingENGTex, gFileSelLTargetingCHITex }, 64, 16 },
+    { { gFileSelCheckBrightnessJPNTex, gFileSelCheckBrightnessENGNTSCTex, gFileSelCheckBrightnessCHITex }, 96, 16 },
 };
 
 static OptionsMenuTextureInfoNES sOptionsMenuSettings[] = {
-    { { gFileSelStereoJPNTex, gFileSelStereoENGTex }, 48, 16 },
-    { { gFileSelMonoJPNTex, gFileSelMonoENGTex }, 48, 16 },
-    { { gFileSelHeadsetJPNTex, gFileSelHeadsetENGTex }, 48, 16 },
-    { { gFileSelSurroundJPNTex, gFileSelSurroundENGTex }, 48, 16 },
-    { { gFileSelSwitchJPNTex, gFileSelSwitchENGTex }, 48, 16 },
-    { { gFileSelHoldJPNTex, gFileSelHoldENGTex }, 48, 16 },
+    { { gFileSelStereoJPNTex, gFileSelStereoENGTex, gFileSelStereoCHITex }, 48, 16 },
+    { { gFileSelMonoJPNTex, gFileSelMonoENGTex, gFileSelMonoCHITex }, 48, 16 },
+    { { gFileSelHeadsetJPNTex, gFileSelHeadsetENGTex, gFileSelHeadsetCHITex }, 48, 16 },
+    { { gFileSelSurroundJPNTex, gFileSelSurroundENGTex, gFileSelSurroundCHITex }, 48, 16 },
+    { { gFileSelSwitchJPNTex, gFileSelSwitchENGTex, gFileSelSwitchCHITex }, 48, 16 },
+    { { gFileSelHoldJPNTex, gFileSelHoldENGTex, gFileSelHoldCHITex }, 48, 16 },
 };
 
 // CODE
@@ -172,7 +173,13 @@ void FileChoose_SetNameEntryVtxNES(GameState* thisx) {
                             255);
             gDPSetEnvColor(POLY_OPA_DISP++, 0, 0, 0, 0);
 
-            gDPLoadTextureBlock(POLY_OPA_DISP++, sBackspaceEndTexturesNES[var_t2], G_IM_FMT_IA, G_IM_SIZ_16b,
+            void* btnTex = sBackspaceEndTexturesNES[var_t2];
+            // #region SOH [Chinese]
+            if (gSaveContext.language == LANGUAGE_CHI && var_t2 == 4) {
+                btnTex = gFileSelENDButtonCHITex;
+            }
+            // #endregion
+            gDPLoadTextureBlock(POLY_OPA_DISP++, btnTex, G_IM_FMT_IA, G_IM_SIZ_16b,
                                 sBackspaceEndWidthsNES[var_t2], 16, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                 G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 

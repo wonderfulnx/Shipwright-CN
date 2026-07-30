@@ -556,4 +556,111 @@ static const ALIGN_ASSET(2) char gFileSelSaveXJPNTex[] = dgFileSelSaveXJPNTex;
 static const ALIGN_ASSET(2) char gFileSelSaveXENGTex[] = dgFileSelSaveXENGTex;
 
 
+
+// #region SOH [Chinese]
+#define dgFileSelAreYouSure2CHITex "__OTR__textures/title_static/gFileSelAreYouSure2CHITex"
+static const ALIGN_ASSET(2) char gFileSelAreYouSure2CHITex[] = dgFileSelAreYouSure2CHITex;
+
+#define dgFileSelAreYouSureCHITex "__OTR__textures/title_static/gFileSelAreYouSureCHITex"
+static const ALIGN_ASSET(2) char gFileSelAreYouSureCHITex[] = dgFileSelAreYouSureCHITex;
+
+#define dgFileSelCheckBrightnessCHITex "__OTR__textures/title_static/gFileSelCheckBrightnessCHITex"
+static const ALIGN_ASSET(2) char gFileSelCheckBrightnessCHITex[] = dgFileSelCheckBrightnessCHITex;
+
+#define dgFileSelControlsCHITex "__OTR__textures/title_static/gFileSelControlsCHITex"
+static const ALIGN_ASSET(2) char gFileSelControlsCHITex[] = dgFileSelControlsCHITex;
+
+#define dgFileSelCopyButtonCHITex "__OTR__textures/title_static/gFileSelCopyButtonCHITex"
+static const ALIGN_ASSET(2) char gFileSelCopyButtonCHITex[] = dgFileSelCopyButtonCHITex;
+
+#define dgFileSelCopyToWhichFileCHITex "__OTR__textures/title_static/gFileSelCopyToWhichFileCHITex"
+static const ALIGN_ASSET(2) char gFileSelCopyToWhichFileCHITex[] = dgFileSelCopyToWhichFileCHITex;
+
+#define dgFileSelCopyWhichFileCHITex "__OTR__textures/title_static/gFileSelCopyWhichFileCHITex"
+static const ALIGN_ASSET(2) char gFileSelCopyWhichFileCHITex[] = dgFileSelCopyWhichFileCHITex;
+
+#define dgFileSelENDButtonCHITex "__OTR__textures/title_static/gFileSelENDButtonCHITex"
+static const ALIGN_ASSET(2) char gFileSelENDButtonCHITex[] = dgFileSelENDButtonCHITex;
+
+#define dgFileSelEraseButtonCHITex "__OTR__textures/title_static/gFileSelEraseButtonCHITex"
+static const ALIGN_ASSET(2) char gFileSelEraseButtonCHITex[] = dgFileSelEraseButtonCHITex;
+
+#define dgFileSelEraseWhichFileCHITex "__OTR__textures/title_static/gFileSelEraseWhichFileCHITex"
+static const ALIGN_ASSET(2) char gFileSelEraseWhichFileCHITex[] = dgFileSelEraseWhichFileCHITex;
+
+#define dgFileSelFile1ButtonCHITex "__OTR__textures/title_static/gFileSelFile1ButtonCHITex"
+static const ALIGN_ASSET(2) char gFileSelFile1ButtonCHITex[] = dgFileSelFile1ButtonCHITex;
+
+#define dgFileSelFile2ButtonCHITex "__OTR__textures/title_static/gFileSelFile2ButtonCHITex"
+static const ALIGN_ASSET(2) char gFileSelFile2ButtonCHITex[] = dgFileSelFile2ButtonCHITex;
+
+#define dgFileSelFile3ButtonCHITex "__OTR__textures/title_static/gFileSelFile3ButtonCHITex"
+static const ALIGN_ASSET(2) char gFileSelFile3ButtonCHITex[] = dgFileSelFile3ButtonCHITex;
+
+#define dgFileSelFileCopiedCHITex "__OTR__textures/title_static/gFileSelFileCopiedCHITex"
+static const ALIGN_ASSET(2) char gFileSelFileCopiedCHITex[] = dgFileSelFileCopiedCHITex;
+
+#define dgFileSelFileEmptyCHITex "__OTR__textures/title_static/gFileSelFileEmptyCHITex"
+static const ALIGN_ASSET(2) char gFileSelFileEmptyCHITex[] = dgFileSelFileEmptyCHITex;
+
+#define dgFileSelFileErasedCHITex "__OTR__textures/title_static/gFileSelFileErasedCHITex"
+static const ALIGN_ASSET(2) char gFileSelFileErasedCHITex[] = dgFileSelFileErasedCHITex;
+
+#define dgFileSelFileInUseCHITex "__OTR__textures/title_static/gFileSelFileInUseCHITex"
+static const ALIGN_ASSET(2) char gFileSelFileInUseCHITex[] = dgFileSelFileInUseCHITex;
+
+#define dgFileSelHeadsetCHITex "__OTR__textures/title_static/gFileSelHeadsetCHITex"
+static const ALIGN_ASSET(2) char gFileSelHeadsetCHITex[] = dgFileSelHeadsetCHITex;
+
+#define dgFileSelHoldCHITex "__OTR__textures/title_static/gFileSelHoldCHITex"
+static const ALIGN_ASSET(2) char gFileSelHoldCHITex[] = dgFileSelHoldCHITex;
+
+#define dgFileSelLTargetingCHITex "__OTR__textures/title_static/gFileSelLTargetingCHITex"
+static const ALIGN_ASSET(2) char gFileSelLTargetingCHITex[] = dgFileSelLTargetingCHITex;
+
+#define dgFileSelMonoCHITex "__OTR__textures/title_static/gFileSelMonoCHITex"
+static const ALIGN_ASSET(2) char gFileSelMonoCHITex[] = dgFileSelMonoCHITex;
+
+#define dgFileSelNameCHITex "__OTR__textures/title_static/gFileSelNameCHITex"
+static const ALIGN_ASSET(2) char gFileSelNameCHITex[] = dgFileSelNameCHITex;
+
+#define dgFileSelNoEmptyFileCHITex "__OTR__textures/title_static/gFileSelNoEmptyFileCHITex"
+static const ALIGN_ASSET(2) char gFileSelNoEmptyFileCHITex[] = dgFileSelNoEmptyFileCHITex;
+
+#define dgFileSelNoFileToCopyCHITex "__OTR__textures/title_static/gFileSelNoFileToCopyCHITex"
+static const ALIGN_ASSET(2) char gFileSelNoFileToCopyCHITex[] = dgFileSelNoFileToCopyCHITex;
+
+#define dgFileSelNoFileToEraseCHITex "__OTR__textures/title_static/gFileSelNoFileToEraseCHITex"
+static const ALIGN_ASSET(2) char gFileSelNoFileToEraseCHITex[] = dgFileSelNoFileToEraseCHITex;
+
+#define dgFileSelOpenThisFileCHITex "__OTR__textures/title_static/gFileSelOpenThisFileCHITex"
+static const ALIGN_ASSET(2) char gFileSelOpenThisFileCHITex[] = dgFileSelOpenThisFileCHITex;
+
+#define dgFileSelOptionsButtonCHITex "__OTR__textures/title_static/gFileSelOptionsButtonCHITex"
+static const ALIGN_ASSET(2) char gFileSelOptionsButtonCHITex[] = dgFileSelOptionsButtonCHITex;
+
+#define dgFileSelOptionsCHITex "__OTR__textures/title_static/gFileSelOptionsCHITex"
+static const ALIGN_ASSET(2) char gFileSelOptionsCHITex[] = dgFileSelOptionsCHITex;
+
+#define dgFileSelPleaseSelectAFileCHITex "__OTR__textures/title_static/gFileSelPleaseSelectAFileCHITex"
+static const ALIGN_ASSET(2) char gFileSelPleaseSelectAFileCHITex[] = dgFileSelPleaseSelectAFileCHITex;
+
+#define dgFileSelQuitButtonCHITex "__OTR__textures/title_static/gFileSelQuitButtonCHITex"
+static const ALIGN_ASSET(2) char gFileSelQuitButtonCHITex[] = dgFileSelQuitButtonCHITex;
+
+#define dgFileSelSOUNDCHITex "__OTR__textures/title_static/gFileSelSOUNDCHITex"
+static const ALIGN_ASSET(2) char gFileSelSOUNDCHITex[] = dgFileSelSOUNDCHITex;
+
+#define dgFileSelStereoCHITex "__OTR__textures/title_static/gFileSelStereoCHITex"
+static const ALIGN_ASSET(2) char gFileSelStereoCHITex[] = dgFileSelStereoCHITex;
+
+#define dgFileSelSurroundCHITex "__OTR__textures/title_static/gFileSelSurroundCHITex"
+static const ALIGN_ASSET(2) char gFileSelSurroundCHITex[] = dgFileSelSurroundCHITex;
+
+#define dgFileSelSwitchCHITex "__OTR__textures/title_static/gFileSelSwitchCHITex"
+static const ALIGN_ASSET(2) char gFileSelSwitchCHITex[] = dgFileSelSwitchCHITex;
+
+#define dgFileSelYesButtonCHITex "__OTR__textures/title_static/gFileSelYesButtonCHITex"
+static const ALIGN_ASSET(2) char gFileSelYesButtonCHITex[] = dgFileSelYesButtonCHITex;
+// #endregion
 #endif // TEXTURES_TITLE_STATIC_H

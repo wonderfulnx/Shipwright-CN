@@ -2,17 +2,23 @@
 """
 Extract Chinese textures from iQue OoT binary files.
 
-Reads texture XML definitions from xml/*.xml, extracts raw N64 texture data
-from corresponding raw/<File>.bin, decodes to RGBA, and saves as PNG via Pillow.
+Reads texture XML definitions from xml/<category>/*.xml, extracts raw N64
+texture data from corresponding raw/<File>.bin, decodes to RGBA, and saves
+as PNG via Pillow.
 
 Output structure (one folder per <File>, one PNG per <Texture>):
-    soh/assets/custom/textures/
-    ├── object_goma/
-    │   └── gGohmaTitleCardCHITex.i8.png
-    ├── do_action_static/
-    │   ├── gAttackDoActionCHITex.ia4.png
+    soh/assets/custom/
+    ├── textures/
+    │   ├── do_action_static/
+    │   │   ├── gAttackDoActionCHITex.ia4.png
+    │   │   └── ...
     │   └── ...
-    └── ...
+    ├── objects/
+    │   └── object_goma/
+    │       └── gGohmaTitleCardCHITex.i8.png
+    └── overlays/
+        └── ovl_End_Title/
+            └── ...
 
 Usage:
     uv run texture_extract/extract.py
@@ -30,7 +36,10 @@ HERE = Path(__file__).resolve().parent           # scripts/chinese/texture_extra
 REPO = HERE.parent.parent.parent                 # Shipwright-CN/
 XML_DIR = HERE / "xml"
 BIN_DIR = HERE / "raw"
-OUTPUT_DIR = REPO / "soh" / "assets" / "custom" / "textures"
+OUTPUT_BASE = REPO / "soh" / "assets" / "custom"
+
+# Category subdirectories under xml/ and soh/assets/custom/
+CATEGORIES = ["objects", "overlays", "textures"]
 
 
 # ---------------------------------------------------------------------------
@@ -158,33 +167,38 @@ BYTES_PER_PIXEL = {
 # ---------------------------------------------------------------------------
 def parse_all_xmls(xml_dir: Path) -> list[dict]:
     """
-    Parse all texture XMLs in xml_dir.
+    Parse all texture XMLs from xml_dir/<category>/*.xml.
     Returns flat list of texture dicts with keys:
-        file_name, name, format, width, height, offset.
+        category, file_name, name, format, width, height, offset.
     """
     textures: list[dict] = []
-    for xml_path in sorted(xml_dir.glob("*.xml")):
-        tree = ET.parse(xml_path)
-        for file_elem in tree.getroot().findall("File"):
-            file_name = file_elem.get("Name")
-            if not file_name:
-                continue
-            for tex_elem in file_elem.findall("Texture"):
-                name = tex_elem.get("Name")
-                if not name:
+    for category in CATEGORIES:
+        cat_dir = xml_dir / category
+        if not cat_dir.is_dir():
+            continue
+        for xml_path in sorted(cat_dir.glob("*.xml")):
+            tree = ET.parse(xml_path)
+            for file_elem in tree.getroot().findall("File"):
+                file_name = file_elem.get("Name")
+                if not file_name:
                     continue
-                w = int(tex_elem.get("Width", "0"), 0)
-                h = int(tex_elem.get("Height", "0"), 0)
-                if w == 0 or h == 0:
-                    continue
-                textures.append({
-                    "file_name": file_name,
-                    "name": name,
-                    "format": tex_elem.get("Format", "rgba32"),
-                    "width": w,
-                    "height": h,
-                    "offset": int(tex_elem.get("Offset", "0"), 0),
-                })
+                for tex_elem in file_elem.findall("Texture"):
+                    name = tex_elem.get("Name")
+                    if not name:
+                        continue
+                    w = int(tex_elem.get("Width", "0"), 0)
+                    h = int(tex_elem.get("Height", "0"), 0)
+                    if w == 0 or h == 0:
+                        continue
+                    textures.append({
+                        "category": category,
+                        "file_name": file_name,
+                        "name": name,
+                        "format": tex_elem.get("Format", "rgba32"),
+                        "width": w,
+                        "height": h,
+                        "offset": int(tex_elem.get("Offset", "0"), 0),
+                    })
     return textures
 
 
@@ -205,10 +219,13 @@ def main() -> None:
     }
 
     textures = parse_all_xmls(XML_DIR)
-    print(f"XMLs:  {len(list(XML_DIR.glob('*.xml')))} files")
+    xml_count = sum(1 for cat in CATEGORIES
+                    for _ in (XML_DIR / cat).glob("*.xml")
+                    if (XML_DIR / cat).is_dir())
+    print(f"XMLs:  {xml_count} files  ({', '.join(CATEGORIES)})")
     print(f"Bins:  {len(available_bins)} files")
     print(f"Defs:  {len(textures)} texture definitions")
-    print(f"Output: {OUTPUT_DIR}")
+    print(f"Output: {OUTPUT_BASE}/<category>/")
     print()
 
     success = 0
@@ -216,8 +233,9 @@ def main() -> None:
 
     for tex in textures:
         file_name = tex["file_name"]
+        category = tex["category"]
         out_name = f"{tex['name']}.{tex['format']}.png"
-        out_path = OUTPUT_DIR / file_name / out_name
+        out_path = OUTPUT_BASE / category / file_name / out_name
 
         # Look up binary
         bin_path = available_bins.get(file_name)
@@ -266,15 +284,20 @@ def main() -> None:
     # Summary
     print(f"\n{'=' * 50}")
     print(f"Done: {success} extracted  |  {skipped} skipped  |  {len(textures)} total")
-    print(f"Output: {OUTPUT_DIR}")
+    print(f"Output: {OUTPUT_BASE}/<category>/")
 
-    # Show folder stats
+    # Show folder stats per category
     if success > 0:
-        folders = sorted(d for d in OUTPUT_DIR.iterdir() if d.is_dir())
-        print(f"Folders: {len(folders)}")
-        for d in folders:
-            count = len(list(d.glob("*.png")))
-            print(f"  {d.name}/  ({count} PNGs)")
+        for category in CATEGORIES:
+            cat_dir = OUTPUT_BASE / category
+            if not cat_dir.is_dir():
+                continue
+            folders = sorted(d for d in cat_dir.iterdir() if d.is_dir())
+            if folders:
+                print(f"\n  {category}/  ({len(folders)} folders)")
+                for d in folders:
+                    count = len(list(d.glob("*.png")))
+                    print(f"    {d.name}/  ({count} PNGs)")
 
 
 if __name__ == "__main__":

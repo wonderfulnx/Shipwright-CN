@@ -1,0 +1,7 @@
+<Root>
+    <File Name="ovl_End_Title">
+        <Texture Name="sTheLegendOfZeldaCHITex" OutName="the_legend_of_zelda_chi" Format="ia8" Width="120" Height="24" Offset="0x4500"/>
+        <Texture Name="sOcarinaOfTimeCHITex" OutName="ocarina_of_time_chi" Format="ia8" Width="112" Height="16" Offset="0x5048"/>
+        <Texture Name="sTheEndCHITex" OutName="the_end_chi" Format="ia8" Width="80" Height="24" Offset="0x3D78"/>
+    </File>
+</Root>

@@ -610,7 +610,7 @@ void EnMag_DrawInner(Actor* thisx, PlayState* play, Gfx** gfxP) {
         }
     }
 
-    if (gSaveContext.language == LANGUAGE_JPN) {
+    if (gSaveContext.language == LANGUAGE_JPN || gSaveContext.language == LANGUAGE_CHI) {
         this->unk_E30C++;
         gDPPipeSync(gfx++);
         gDPSetCycleType(gfx++, G_CYC_2CYCLE);
@@ -630,7 +630,8 @@ void EnMag_DrawInner(Actor* thisx, PlayState* play, Gfx** gfxP) {
             gDPSetEnvColor(gfx++, ZREG(34), 100 + ZREG(35), 255 + ZREG(36), 255);
         }
         if ((s16)this->subAlpha != 0) {
-            gDPLoadTextureBlock(gfx++, gTitleTitleJPNTex, G_IM_FMT_I, G_IM_SIZ_8b, 128, 16, 0,
+            void* titleTex = (gSaveContext.language == LANGUAGE_CHI) ? gTitleTitleCHITex : gTitleTitleJPNTex;
+            gDPLoadTextureBlock(gfx++, titleTex, G_IM_FMT_I, G_IM_SIZ_8b, 128, 16, 0,
                                 G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP,
                                 G_TX_NOMASK, G_TX_NOLOD);
             gDPLoadMultiBlock(gfx++, gTitleFlameEffectTex, 0x100, 1, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0,

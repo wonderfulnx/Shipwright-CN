@@ -1,0 +1,35 @@
+<Root>
+    <File Name="icon_item_nes_static" Segment="13">
+        <Texture Name="gPauseDekuTitleCHITex" OutName="pause_deku_title_chi" Format="ia8" Width="96" Height="16" Offset="0x0"/>
+        <Texture Name="gPauseDodongoTitleCHITex" OutName="pause_dodongo_title_chi" Format="ia8" Width="96" Height="16" Offset="0x600"/>
+        <Texture Name="gPauseJabuTitleCHITex" OutName="pause_inside_jabu_title_chi" Format="ia8" Width="96" Height="16" Offset="0xC00"/>
+        <Texture Name="gPauseForestTitleCHITex" OutName="pause_forest_title_chi" Format="ia8" Width="96" Height="16" Offset="0x1200"/>
+        <Texture Name="gPauseFireTitleCHITex" OutName="pause_fire_title_chi" Format="ia8" Width="96" Height="16" Offset="0x1800"/>
+        <Texture Name="gPauseWaterTitleCHITex" OutName="pause_water_title_chi" Format="ia8" Width="96" Height="16" Offset="0x1E00"/>
+        <Texture Name="gPauseSpiritTitleCHITex" OutName="pause_spirit_title_chi" Format="ia8" Width="96" Height="16" Offset="0x2400"/>
+        <Texture Name="gPauseShadowTitleCHITex" OutName="pause_shadow_title_chi" Format="ia8" Width="96" Height="16" Offset="0x2A00"/>
+        <Texture Name="gPauseBotWTitleCHITex" OutName="pause_botw_title_chi" Format="ia8" Width="96" Height="16" Offset="0x3000"/>
+        <Texture Name="gPauseIceCavernTitleCHITex" OutName="pause_ice_cavern_title_chi" Format="ia8" Width="96" Height="16" Offset="0x3600"/>
+        <Texture Name="gPauseToEquipCHITex" OutName="pause_to_equip_chi" Format="ia8" Width="56" Height="16" Offset="0x3C00"/>
+        <Texture Name="gPauseToDecideCHITex" OutName="pause_to_decide_chi" Format="ia8" Width="64" Height="16" Offset="0x3F80"/>
+        <Texture Name="gPauseToPlayMelodyCHITex" OutName="pause_to_play_melody_chi" Format="ia8" Width="80" Height="16" Offset="0x4380"/>
+        <Texture Name="gPauseToSelectItemCHITex" OutName="pause_to_select_item_chi" Format="ia8" Width="128" Height="16" Offset="0x4880"/>
+        <Texture Name="gPauseToMapCHITex" OutName="pause_to_map_chi" Format="ia8" Width="128" Height="16" Offset="0x5080"/>
+        <Texture Name="gPauseToQuestStatusCHITex" OutName="pause_to_quest_status_chi" Format="ia8" Width="128" Height="16" Offset="0x5880"/>
+        <Texture Name="gPauseToEquipmentCHITex" OutName="pause_to_equipment_chi" Format="ia8" Width="128" Height="16" Offset="0x6080"/>
+        <Texture Name="gPauseSavePromptCHITex" OutName="pause_save_prompt_chi" Format="ia8" Width="152" Height="16" Offset="0x6880"/>
+        <Texture Name="gPauseSaveConfirmationCHITex" OutName="pause_save_confirmation_chi" Format="ia8" Width="152" Height="16" Offset="0x7200"/>
+        <Texture Name="gPauseYesCHITex" OutName="pause_yes_chi" Format="ia8" Width="48" Height="16" Offset="0x7B80"/>
+        <Texture Name="gPauseNoCHITex" OutName="pause_no_chi" Format="ia8" Width="48" Height="16" Offset="0x7E80"/>
+        <Texture Name="gPauseCurrentPositionCHITex" OutName="pause_current_position_chi" Format="i4" Width="64" Height="8" Offset="0x8180"/>
+        <Texture Name="gPauseEquipment10CHITex" OutName="pause_equipment_1_0_chi" Format="ia8" Width="80" Height="32" Offset="0x8280"/>
+        <Texture Name="gPauseSelectItem00CHITex" OutName="pause_select_item_0_0_chi" Format="ia8" Width="80" Height="32" Offset="0x8C80"/>
+        <Texture Name="gPauseSelectItem10CHITex" OutName="pause_select_item_1_0_chi" Format="ia8" Width="80" Height="32" Offset="0x9680"/>
+        <Texture Name="gPauseSelectItem20CHITex" OutName="pause_select_item_2_0_chi" Format="ia8" Width="80" Height="32" Offset="0xA080"/>
+        <Texture Name="gPauseMap10CHITex" OutName="pause_map_1_0_chi" Format="ia8" Width="80" Height="32" Offset="0xAA80"/>
+        <Texture Name="gPauseQuestStatus00CHITex" OutName="pause_quest_status_0_0_chi" Format="ia8" Width="80" Height="32" Offset="0xB480"/>
+        <Texture Name="gPauseQuestStatus10CHITex" OutName="pause_quest_status_1_0_chi" Format="ia8" Width="80" Height="32" Offset="0xBE80"/>
+        <Texture Name="gPauseQuestStatus20CHITex" OutName="pause_quest_status_2_0_chi" Format="ia8" Width="80" Height="32" Offset="0xC880"/>
+        <Texture Name="gPauseSave10CHITex" OutName="pause_save_1_0_chi" Format="ia8" Width="80" Height="32" Offset="0xD280"/>
+    </File>
+</Root>

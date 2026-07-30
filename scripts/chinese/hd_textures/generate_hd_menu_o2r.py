@@ -27,68 +27,90 @@ except ImportError:
 # Paths
 HERE = Path(__file__).resolve().parent             # scripts/chinese/hd_textures/
 REPO = HERE.parent.parent.parent                   # Shipwright-CN/
-CUSTOM_DIR = REPO / "soh" / "assets" / "custom" / "textures"
-HD_DIR = HERE                                       # HD PNGs in the same directory
+CUSTOM_DIR = REPO / "soh" / "assets" / "custom"
+HD_DIR = HERE                                       # HD PNGs grouped by category
 OUT_O2R = REPO / "chinese_menu_hd.o2r"
+
+CATEGORIES = ["textures", "objects", "overlays"]
 
 # OTR binary format constants
 OTR_HEADER_SIZE = 0x40
 RESOURCE_TYPE_TEXTURE = 0x4F544558
 TEX_FLAG_LOAD_AS_RAW = 1
 
-# N64 texture types derived from custom PNG suffix
-# IA4: G_IM_FMT_IA | G_IM_SIZ_4b  (4bpp, 0.5 B/px)
-# IA8: G_IM_FMT_IA | G_IM_SIZ_8b  (8bpp, 1 B/px)
-# I8:  G_IM_FMT_I  | G_IM_SIZ_8b  (8bpp, 1 B/px)
-IA4 = 6
-IA8 = 7
-I8  = 5
+# Fast::TextureType enum values (libultraship/include/fast/resource/type/Texture.h)
+RGBA32 = 1
+RGBA16 = 2
+I4     = 5   # Grayscale4bpp        (4bpp, 0.5 B/px)
+I8     = 6   # Grayscale8bpp        (8bpp, 1 B/px)
+IA4    = 7   # GrayscaleAlpha4bpp   (4bpp, 0.5 B/px)
+IA8    = 8   # GrayscaleAlpha8bpp   (8bpp, 1 B/px)
+IA16   = 9   # GrayscaleAlpha16bpp  (16bpp, 2 B/px)
 
 
 def tex_type_from_png_name(png_name: str) -> int:
-    """Return the N64 texture type based on the PNG format suffix."""
+    """Return the Fast::TextureType value based on the PNG format suffix."""
+    if ".rgba32." in png_name:
+        return RGBA32
+    if ".rgba16." in png_name:
+        return RGBA16
+    if ".ia16." in png_name:
+        return IA16
     if ".ia8." in png_name:
         return IA8
     if ".i8." in png_name:
         return I8
-    return IA4
+    if ".i4." in png_name:
+        return I4
+    return IA4  # default for ia4
 
 
 def orig_bytes_per_row(orig_w: int, tex_type: int) -> float:
-    """Original bytes per row for the given N64 texture type."""
-    if tex_type in (IA8, I8):   # 8bpp: 1 byte/pixel
+    """Original bytes per row for the given texture type."""
+    if tex_type in (RGBA32,):               # 32bpp: 4 bytes/pixel
+        return orig_w * 4.0
+    if tex_type in (RGBA16, IA16):          # 16bpp: 2 bytes/pixel
+        return orig_w * 2.0
+    if tex_type in (I8, IA8):               # 8bpp: 1 byte/pixel
         return orig_w * 1.0
-    else:                       # IA4 / I4: 4bpp: 0.5 byte/pixel
-        return orig_w * 0.5
+    return orig_w * 0.5                     # I4 / IA4: 4bpp: 0.5 byte/pixel
 
 
 def verify_coverage() -> dict[str, list[tuple[str, Path, Path]]]:
     """Check every custom CHI PNG has a matching HD PNG.
 
-    Auto-detects folders — any folder in CUSTOM_DIR that contains
-    *CHI*.png files and has a matching folder in HD_DIR.
+    Scans soh/assets/custom/<category>/<folder>/ for *CHI*.png files and
+    expects matching HD PNGs at scripts/chinese/hd_textures/<category>/<folder>/.
+    Returns dict keyed by "category/folder".
     """
     result: dict[str, list[tuple[str, Path, Path]]] = {}
     missing: list[str] = []
 
-    for custom_dir in sorted(CUSTOM_DIR.iterdir()):
-        if not custom_dir.is_dir():
+    for category in CATEGORIES:
+        custom_cat = CUSTOM_DIR / category
+        hd_cat = HD_DIR / category
+        if not custom_cat.is_dir():
             continue
-        folder = custom_dir.name
-        hd_dir = HD_DIR / folder
 
-        entries: list[tuple[str, Path, Path]] = []
-        for png in sorted(custom_dir.iterdir()):
-            if not png.name.endswith(".png") or "CHI" not in png.name:
+        for custom_dir in sorted(custom_cat.iterdir()):
+            if not custom_dir.is_dir():
                 continue
-            tex_name = png.name.split(".")[0]
-            hd_png = hd_dir / f"{tex_name}.png"
-            if not hd_png.exists():
-                missing.append(f"  {folder}/{tex_name}: HD PNG not found at {hd_png}")
-            entries.append((tex_name, png, hd_png))
+            folder = custom_dir.name
+            custom_hd_dir = hd_cat / folder
 
-        if entries:
-            result[folder] = entries
+            entries: list[tuple[str, Path, Path]] = []
+            for png in sorted(custom_dir.iterdir()):
+                if not png.name.endswith(".png") or "CHI" not in png.name:
+                    continue
+                tex_name = png.name.split(".")[0]
+                hd_png = custom_hd_dir / f"{tex_name}.png"
+                if not hd_png.exists():
+                    missing.append(f"  {category}/{folder}/{tex_name}: "
+                                   f"HD PNG not found at {hd_png}")
+                entries.append((tex_name, png, hd_png))
+
+            if entries:
+                result[f"{category}/{folder}"] = entries
 
     if missing:
         print("ERROR: Missing HD textures:")
@@ -143,11 +165,12 @@ def main():
     print(f"  All {total} custom CHI textures have matching HD PNGs.\n")
 
     print(f"Packing O2R → {OUT_O2R} ...")
+    not_8x: list[str] = []
     with zipfile.ZipFile(str(OUT_O2R), "w", zipfile.ZIP_DEFLATED) as zf:
         zf.writestr("portVersion", "9.2.3")
 
         count = 0
-        for folder, entries in entries_by_folder.items():
+        for path_key, entries in entries_by_folder.items():
             for tex_name, custom_png, hd_png in entries:
                 # Read original dimensions from the custom PNG
                 with Image.open(custom_png) as orig:
@@ -162,13 +185,24 @@ def main():
                     hd_w, hd_h = hd_img.size
                     rgba_data = hd_img.tobytes("raw", "RGBA")
 
+                # Warn if HD is not exactly 8× the original
+                if hd_w != orig_w * 8 or hd_h != orig_h * 8:
+                    not_8x.append(f"  {path_key}/{tex_name}  "
+                                  f"orig={orig_w}×{orig_h}  hd={hd_w}×{hd_h}")
+                    print(f"  WARNING: {path_key}/{tex_name}: "
+                          f"expected {orig_w*8}×{orig_h*8}, got {hd_w}×{hd_h}")
+
                 otr_data = build_otr_resource(rgba_data, orig_w, orig_h,
                                               hd_w, hd_h, tex_type)
-                zf.writestr(f"alt/textures/{folder}/{tex_name}", otr_data)
+                zf.writestr(f"alt/{path_key}/{tex_name}", otr_data)
                 count += 1
 
+    if not_8x:
+        print(f"  There are {len(not_8x)} texture(s) not exactly 8× the original size.")
+    else:
+        print(f"  All {count} textures are exactly 8× the original size.")
     size_mb = OUT_O2R.stat().st_size / 1024 / 1024
-    print(f"Done: {OUT_O2R} ({size_mb:.1f} MB, {count} textures)")
+    print(f"\nDone: {OUT_O2R} ({size_mb:.1f} MB, {count} textures)")
     print(f"Place in: mods/chinese_menu_hd.o2r")
 
 

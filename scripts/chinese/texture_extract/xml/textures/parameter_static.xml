@@ -1,0 +1,5 @@
+<Root>
+    <File Name="parameter_static" Segment="2">
+        <Texture Name="gNaviCUpCHITex" OutName="navi_c_up_chi" Format="ia4" Width="48" Height="16" Offset="0x2FC0"/>
+    </File>
+</Root>

@@ -795,7 +795,13 @@ void KaleidoScope_DrawItemSelect(PlayState* play) {
                 gDPSetGrayscaleColor(POLY_OPA_DISP++, 109, 109, 109, 255);
                 gSPGrayscale(POLY_OPA_DISP++, true);
             }
-            KaleidoScope_DrawQuadTextureRGBA32(play->state.gfxCtx, gItemIcons[itemId], 32, 32, 0);
+            void* iconTex = gItemIcons[itemId];
+            // #region SOH [Chinese]
+            if (gSaveContext.language == LANGUAGE_CHI && itemId == ITEM_SOLD_OUT) {
+                iconTex = gItemIconSoldOutCHITex;
+            }
+            // #endregion
+            KaleidoScope_DrawQuadTextureRGBA32(play->state.gfxCtx, iconTex, 32, 32, 0);
             gSPGrayscale(POLY_OPA_DISP++, false);
         }
     }

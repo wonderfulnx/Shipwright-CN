@@ -1,0 +1,5 @@
+<Root>
+    <File Name="icon_item_static" Segment="8">
+        <Texture Name="gItemIconSoldOutCHITex" OutName="sold_out_icon_chi" Format="rgba32" Width="32" Height="32" Offset="0x2C000"/>
+    </File>
+</Root>

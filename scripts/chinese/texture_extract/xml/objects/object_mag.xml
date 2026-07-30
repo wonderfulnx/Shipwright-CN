@@ -1,0 +1,5 @@
+<Root>
+    <File Name="object_mag" Segment="6">
+        <Texture Name="gTitleTitleCHITex" OutName="title_title_chi" Format="i8" Width="128" Height="16" Offset="0x1F440"/>
+    </File>
+</Root>

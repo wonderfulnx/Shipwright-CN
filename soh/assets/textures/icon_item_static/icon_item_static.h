@@ -561,4 +561,9 @@ static const ALIGN_ASSET(2) char gPromptCursorLeftDL[] = dgPromptCursorLeftDL;
 #define dgPromptCursorRightDL "__OTR__textures/icon_item_static/gPromptCursorRightDL"
 static const ALIGN_ASSET(2) char gPromptCursorRightDL[] = dgPromptCursorRightDL;
 
+
+// #region SOH [Chinese]
+#define dgItemIconSoldOutCHITex "__OTR__textures/icon_item_static/gItemIconSoldOutCHITex"
+static const ALIGN_ASSET(2) char gItemIconSoldOutCHITex[] = dgItemIconSoldOutCHITex;
+// #endregion
 #endif // TEXTURES_ICON_ITEM_STATIC_H

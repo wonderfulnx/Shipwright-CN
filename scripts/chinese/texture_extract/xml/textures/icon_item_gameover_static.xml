@@ -1,0 +1,8 @@
+<Root>
+    <File Name="icon_item_gameover_static" Segment="12">
+        <Texture Name="gGameOverP1CHITex" OutName="game_over_p1_chi" Format="ia8" Width="64" Height="32" Offset="0x0"/>
+        <Texture Name="gGameOverP2CHITex" OutName="game_over_p2_chi" Format="ia8" Width="64" Height="32" Offset="0x800"/>
+        <Texture Name="gGameOverP3CHITex" OutName="game_over_p3_chi" Format="ia8" Width="64" Height="32" Offset="0x1000"/>
+        <Texture Name="gContinuePlayingCHITex" OutName="continue_playing_chi" Format="ia8" Width="152" Height="16" Offset="0x2980"/>
+    </File>
+</Root>

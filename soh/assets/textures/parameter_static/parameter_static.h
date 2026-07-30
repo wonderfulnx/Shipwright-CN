@@ -171,4 +171,9 @@ static const ALIGN_ASSET(2) char gMagicMeterMidTex[] = dgMagicMeterMidTex;
 #define dgMagicMeterFillTex "__OTR__textures/parameter_static/gMagicMeterFillTex"
 static const ALIGN_ASSET(2) char gMagicMeterFillTex[] = dgMagicMeterFillTex;
 
+
+// #region SOH [Chinese]
+#define dgNaviCUpCHITex "__OTR__textures/parameter_static/gNaviCUpCHITex"
+static const ALIGN_ASSET(2) char gNaviCUpCHITex[] = dgNaviCUpCHITex;
+// #endregion
 #endif // TEXTURES_PARAMETER_STATIC_H

@@ -107,6 +107,36 @@ static void* sSaveENGTexs[] = {
     gPauseSave20Tex,    gPauseSave21Tex, gPauseSave22Tex, gPauseSave23Tex, gPauseSave24Tex,
 };
 
+// #region SOH [Chinese]
+static void* sEquipmentCHITexs[] = {
+    gPauseEquipment00Tex,    gPauseEquipment01Tex, gPauseEquipment02Tex, gPauseEquipment03Tex, gPauseEquipment04Tex,
+    gPauseEquipment10CHITex, gPauseEquipment11Tex, gPauseEquipment12Tex, gPauseEquipment13Tex, gPauseEquipment14Tex,
+    gPauseEquipment20Tex,    gPauseEquipment21Tex, gPauseEquipment22Tex, gPauseEquipment23Tex, gPauseEquipment24Tex,
+};
+static void* sSelectItemCHITexs[] = {
+    gPauseSelectItem00CHITex, gPauseSelectItem01Tex,    gPauseSelectItem02Tex,    gPauseSelectItem03Tex,
+    gPauseSelectItem04Tex,    gPauseSelectItem10CHITex, gPauseSelectItem11Tex,    gPauseSelectItem12Tex,
+    gPauseSelectItem13Tex,    gPauseSelectItem14Tex,    gPauseSelectItem20CHITex, gPauseSelectItem21Tex,
+    gPauseSelectItem22Tex,    gPauseSelectItem23Tex,    gPauseSelectItem24Tex,
+};
+static void* sMapCHITexs[] = {
+    gPauseMap00Tex,    gPauseMap01Tex, gPauseMap02Tex, gPauseMap03Tex, gPauseMap04Tex,
+    gPauseMap10CHITex, gPauseMap11Tex, gPauseMap12Tex, gPauseMap13Tex, gPauseMap14Tex,
+    gPauseMap20Tex,    gPauseMap21Tex, gPauseMap22Tex, gPauseMap23Tex, gPauseMap24Tex,
+};
+static void* sQuestStatusCHITexs[] = {
+    gPauseQuestStatus00CHITex, gPauseQuestStatus01Tex,    gPauseQuestStatus02Tex,    gPauseQuestStatus03Tex,
+    gPauseQuestStatus04Tex,    gPauseQuestStatus10CHITex, gPauseQuestStatus11Tex,    gPauseQuestStatus12Tex,
+    gPauseQuestStatus13Tex,    gPauseQuestStatus14Tex,    gPauseQuestStatus20CHITex, gPauseQuestStatus21Tex,
+    gPauseQuestStatus22Tex,    gPauseQuestStatus23Tex,    gPauseQuestStatus24Tex,
+};
+static void* sSaveCHITexs[] = {
+    gPauseSave00Tex,    gPauseSave01Tex, gPauseSave02Tex, gPauseSave03Tex, gPauseSave04Tex,
+    gPauseSave10CHITex, gPauseSave11Tex, gPauseSave12Tex, gPauseSave13Tex, gPauseSave14Tex,
+    gPauseSave20Tex,    gPauseSave21Tex, gPauseSave22Tex, gPauseSave23Tex, gPauseSave24Tex,
+};
+// #endregion
+
 static void* sEquipmentJPNTexs[] = {
     gPauseEquipment00Tex,    gPauseEquipment01Tex, gPauseEquipment02Tex, gPauseEquipment03Tex, gPauseEquipment04Tex,
     gPauseEquipment10JPNTex, gPauseEquipment11Tex, gPauseEquipment12Tex, gPauseEquipment13Tex, gPauseEquipment14Tex,
@@ -217,7 +247,7 @@ static void* sEquipmentTexs[] = {
     sEquipmentGERTexs,
     sEquipmentFRATexs,
     sEquipmentJPNTexs,
-    sEquipmentENGTexs, // LANGUAGE_CHI — fallback to English
+    sEquipmentCHITexs, // LANGUAGE_CHI
 };
 
 static void* sSelectItemTexs[] = {
@@ -225,7 +255,7 @@ static void* sSelectItemTexs[] = {
     sSelectItemGERTexs,
     sSelectItemFRATexs,
     sSelectItemJPNTexs,
-    sSelectItemENGTexs, // LANGUAGE_CHI
+    sSelectItemCHITexs, // LANGUAGE_CHI
 };
 
 static void* sMapTexs[] = {
@@ -233,7 +263,7 @@ static void* sMapTexs[] = {
     sMapGERTexs,
     sMapFRATexs,
     sMapJPNTexs,
-    sMapENGTexs, // LANGUAGE_CHI
+    sMapCHITexs, // LANGUAGE_CHI
 };
 
 static void* sQuestStatusTexs[] = {
@@ -241,7 +271,7 @@ static void* sQuestStatusTexs[] = {
     sQuestStatusGERTexs,
     sQuestStatusFRATexs,
     sQuestStatusJPNTexs,
-    sQuestStatusENGTexs, // LANGUAGE_CHI
+    sQuestStatusCHITexs, // LANGUAGE_CHI
 };
 
 static void* sSaveTexs[] = {
@@ -249,7 +279,7 @@ static void* sSaveTexs[] = {
     sSaveGERTexs,
     sSaveFRATexs,
     sSaveJPNTexs,
-    sSaveENGTexs, // LANGUAGE_CHI
+    sSaveCHITexs, // LANGUAGE_CHI
 };
 
 static void* iconNameTextures[] = {
@@ -1279,7 +1309,7 @@ static void* sSavePromptTexs[] = {
     gPauseSavePromptGERTex,
     gPauseSavePromptFRATex,
     gPauseSavePromptJPNTex,
-    gPauseSavePromptENGTex, // LANGUAGE_CHI
+    gPauseSavePromptCHITex, // LANGUAGE_CHI
 };
 
 static void* sSaveConfirmationTexs[] = {
@@ -1287,7 +1317,7 @@ static void* sSaveConfirmationTexs[] = {
     gPauseSaveConfirmationGERTex,
     gPauseSaveConfirmationFRATex,
     gPauseSaveConfirmationJPNTex,
-    gPauseSaveConfirmationENGTex, // LANGUAGE_CHI
+    gPauseSaveConfirmationCHITex, // LANGUAGE_CHI
 };
 
 static void* sContinuePromptTexs[] = {
@@ -1295,7 +1325,7 @@ static void* sContinuePromptTexs[] = {
     gContinuePlayingGERTex,
     gContinuePlayingFRATex,
     gContinuePlayingJPNTex,
-    gContinuePlayingENGTex, // LANGUAGE_CHI
+    gContinuePlayingCHITex, // LANGUAGE_CHI
 };
 
 static void* sPromptChoiceTexs[][2] = {
@@ -1303,7 +1333,7 @@ static void* sPromptChoiceTexs[][2] = {
     { gPauseYesGERTex, gPauseNoGERTex },
     { gPauseYesFRATex, gPauseNoFRATex },
     { gPauseYesJPNTex, gPauseNoJPNTex },
-    { gPauseYesENGTex, gPauseNoENGTex }, // LANGUAGE_CHI
+    { gPauseYesCHITex, gPauseNoCHITex }, // LANGUAGE_CHI
 };
 
 static u8 sButtonStatusSave[ARRAY_COUNT(gSaveContext.buttonStatus)];
@@ -2083,33 +2113,33 @@ void KaleidoScope_DrawInfoPanel(PlayState* play) {
         gPauseToEquipGERTex,
         gPauseToEquipFRATex,
         gPauseToEquipJPNTex,
-        gPauseToEquipENGTex, // CHI uses ENG
+        gPauseToEquipCHITex, // CHI
     };
     static const void* sToDecideTextures[5] = {
         gPauseToDecideENGTex,
         gPauseToDecideGERTex,
         gPauseToDecideFRATex,
         gPauseToDecideJPNTex,
-        gPauseToDecideENGTex, // CHI uses ENG
+        gPauseToDecideCHITex, // CHI
     };
     static const void* sPlayMelodyTextures[5] = {
         gPauseToPlayMelodyENGTex,
         gPauseToPlayMelodyGERTex,
         gPauseToPlayMelodyFRATex,
         gPauseToPlayMelodyJPNTex,
-        gPauseToPlayMelodyENGTex, // CHI uses ENG
+        gPauseToPlayMelodyCHITex, // CHI
     };
     static const void* D_8082AD78[][5] = {
-        { gPauseToEquipmentENGTex, gPauseToEquipmentGERTex, gPauseToEquipmentFRATex, gPauseToEquipmentJPNTex, gPauseToEquipmentENGTex },
-        { gPauseToSelectItemENGTex, gPauseToSelectItemGERTex, gPauseToSelectItemFRATex, gPauseToSelectItemJPNTex, gPauseToSelectItemENGTex },
-        { gPauseToMapENGTex, gPauseToMapGERTex, gPauseToMapFRATex, gPauseToMapJPNTex, gPauseToMapENGTex },
-        { gPauseToQuestStatusENGTex, gPauseToQuestStatusGERTex, gPauseToQuestStatusFRATex, gPauseToQuestStatusJPNTex, gPauseToQuestStatusENGTex },
+        { gPauseToEquipmentENGTex, gPauseToEquipmentGERTex, gPauseToEquipmentFRATex, gPauseToEquipmentJPNTex, gPauseToEquipmentCHITex },
+        { gPauseToSelectItemENGTex, gPauseToSelectItemGERTex, gPauseToSelectItemFRATex, gPauseToSelectItemJPNTex, gPauseToSelectItemCHITex },
+        { gPauseToMapENGTex, gPauseToMapGERTex, gPauseToMapFRATex, gPauseToMapJPNTex, gPauseToMapCHITex },
+        { gPauseToQuestStatusENGTex, gPauseToQuestStatusGERTex, gPauseToQuestStatusFRATex, gPauseToQuestStatusJPNTex, gPauseToQuestStatusCHITex },
     };
     static void* D_8082ADA8[][5] = {
-        { gPauseToMapENGTex, gPauseToMapGERTex, gPauseToMapFRATex, gPauseToMapJPNTex, gPauseToMapENGTex },
-        { gPauseToQuestStatusENGTex, gPauseToQuestStatusGERTex, gPauseToQuestStatusFRATex, gPauseToQuestStatusJPNTex, gPauseToQuestStatusENGTex },
-        { gPauseToEquipmentENGTex, gPauseToEquipmentGERTex, gPauseToEquipmentFRATex, gPauseToEquipmentJPNTex, gPauseToEquipmentENGTex },
-        { gPauseToSelectItemENGTex, gPauseToSelectItemGERTex, gPauseToSelectItemFRATex, gPauseToSelectItemJPNTex, gPauseToSelectItemENGTex },
+        { gPauseToMapENGTex, gPauseToMapGERTex, gPauseToMapFRATex, gPauseToMapJPNTex, gPauseToMapCHITex },
+        { gPauseToQuestStatusENGTex, gPauseToQuestStatusGERTex, gPauseToQuestStatusFRATex, gPauseToQuestStatusJPNTex, gPauseToQuestStatusCHITex },
+        { gPauseToEquipmentENGTex, gPauseToEquipmentGERTex, gPauseToEquipmentFRATex, gPauseToEquipmentJPNTex, gPauseToEquipmentCHITex },
+        { gPauseToSelectItemENGTex, gPauseToSelectItemGERTex, gPauseToSelectItemFRATex, gPauseToSelectItemJPNTex, gPauseToSelectItemCHITex },
     };
     static u16 D_8082ADD8[5] = { 56, 88, 80, 56, 56 }; // CHI uses ENG width
     static u16 D_8082ADE0[5] = { 64, 88, 72, 48, 64 }; // CHI uses ENG width
@@ -3644,9 +3674,15 @@ void KaleidoScope_DrawGameOver(PlayState* play) {
 
     VREG(89) -= 2;
 
+    if (gSaveContext.language == LANGUAGE_CHI) {
+    gDPLoadMultiBlock(POLY_OPA_DISP++, gGameOverP1CHITex, 0, 0, G_IM_FMT_IA, G_IM_SIZ_8b, 64, 32, 0,
+                      G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
+                      G_TX_NOLOD);
+    } else {
     gDPLoadMultiBlock(POLY_OPA_DISP++, gGameOverP1Tex, 0, 0, G_IM_FMT_IA, G_IM_SIZ_8b, 64, 32, 0,
                       G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                       G_TX_NOLOD);
+    }
 
     gDPLoadMultiBlock(POLY_OPA_DISP++, gGameOverMaskTex, 256, 1, G_IM_FMT_IA, G_IM_SIZ_8b, 64, 32, 0,
                       G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, 5, G_TX_NOLOD, G_TX_NOLOD);
@@ -3656,16 +3692,28 @@ void KaleidoScope_DrawGameOver(PlayState* play) {
     gSPTextureRectangle(POLY_OPA_DISP++, VREG(87) << 2, VREG(88) << 2, (VREG(87) + 64) << 2, (VREG(88) + 32) << 2,
                         G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
 
+    if (gSaveContext.language == LANGUAGE_CHI) {
+    gDPLoadMultiBlock(POLY_OPA_DISP++, gGameOverP2CHITex, 0, 0, G_IM_FMT_IA, G_IM_SIZ_8b, 64, 32, 0,
+                      G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
+                      G_TX_NOLOD);
+    } else {
     gDPLoadMultiBlock(POLY_OPA_DISP++, gGameOverP2Tex, 0, 0, G_IM_FMT_IA, G_IM_SIZ_8b, 64, 32, 0,
                       G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                       G_TX_NOLOD);
+    }
 
     gSPTextureRectangle(POLY_OPA_DISP++, (VREG(87) + 64) << 2, VREG(88) << 2, (VREG(87) + 128) << 2,
                         (VREG(88) + 32) << 2, G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
 
+    if (gSaveContext.language == LANGUAGE_CHI) {
+    gDPLoadMultiBlock(POLY_OPA_DISP++, gGameOverP3CHITex, 0, 0, G_IM_FMT_IA, G_IM_SIZ_8b, 64, 32, 0,
+                      G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
+                      G_TX_NOLOD);
+    } else {
     gDPLoadMultiBlock(POLY_OPA_DISP++, gGameOverP3Tex, 0, 0, G_IM_FMT_IA, G_IM_SIZ_8b, 64, 32, 0,
                       G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                       G_TX_NOLOD);
+    }
     gSPTextureRectangle(POLY_OPA_DISP++, (VREG(87) + 128) << 2, VREG(88) << 2, (VREG(87) + 192) << 2,
                         (VREG(88) + 32) << 2, G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
 

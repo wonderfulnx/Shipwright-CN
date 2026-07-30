@@ -92,7 +92,7 @@ void FileChoose_SetKeyboardVtx(GameState* thisx) {
 static void* sNameLabelTextures[] = {
     gFileSelNameENGTex, gFileSelNameENGTex, gFileSelNameFRATex,
     gFileSelNameENGTex, // LANGUAGE_JPN — fallback to English
-    gFileSelNameENGTex, // LANGUAGE_CHI
+    gFileSelNameCHITex, // LANGUAGE_CHI
 };
 
 static void* sBackspaceEndTextures[][2] = {
@@ -100,7 +100,7 @@ static void* sBackspaceEndTextures[][2] = {
     { gFileSelBackspaceButtonTex, gFileSelENDButtonGERTex },
     { gFileSelBackspaceButtonTex, gFileSelENDButtonFRATex },
     { gFileSelBackspaceButtonTex, gFileSelENDButtonENGTex }, // LANGUAGE_JPN
-    { gFileSelBackspaceButtonTex, gFileSelENDButtonENGTex }, // LANGUAGE_CHI
+    { gFileSelBackspaceButtonTex, gFileSelENDButtonCHITex }, // LANGUAGE_CHI
 };
 
 static u16 sBackspaceEndWidths[] = { 28, 44 };
@@ -847,21 +847,21 @@ typedef struct {
 } OptionsMenuTextureInfo;
 
 static OptionsMenuTextureInfo gOptionsMenuHeaders[] = {
-    { { gFileSelOptionsENGTex, gFileSelOptionsGERTex, gFileSelOptionsENGTex, gFileSelOptionsENGTex, gFileSelOptionsENGTex }, { 128, 128, 128, 128, 128 }, 16 },
-    { { gFileSelSOUNDENGTex, gFileSelSOUNDENGTex, gFileSelSOUNDFRATex, gFileSelSOUNDENGTex, gFileSelSOUNDENGTex }, { 64, 64, 64, 64, 64 }, 16 },
-    { { gFileSelLTargetingENGTex, gFileSelLTargetingGERTex, gFileSelLTargetingFRATex, gFileSelLTargetingENGTex, gFileSelLTargetingENGTex }, { 64, 144, 64, 64, 64 }, 16 },
-    { { gFileSelCheckBrightnessENGTex, gFileSelCheckBrightnessGERTex, gFileSelCheckBrightnessFRATex, gFileSelCheckBrightnessENGTex, gFileSelCheckBrightnessENGTex },
-      { 128, 128, 128, 128, 128 }, 16 },
+    { { gFileSelOptionsENGTex, gFileSelOptionsGERTex, gFileSelOptionsENGTex, gFileSelOptionsENGTex, gFileSelOptionsCHITex }, { 128, 128, 128, 128, 128 }, 16 },
+    { { gFileSelSOUNDENGTex, gFileSelSOUNDENGTex, gFileSelSOUNDFRATex, gFileSelSOUNDENGTex, gFileSelSOUNDCHITex }, { 64, 64, 64, 64, 64 }, 16 },
+    { { gFileSelLTargetingENGTex, gFileSelLTargetingGERTex, gFileSelLTargetingFRATex, gFileSelLTargetingENGTex, gFileSelLTargetingCHITex }, { 64, 144, 64, 64, 64 }, 16 },
+    { { gFileSelCheckBrightnessENGTex, gFileSelCheckBrightnessGERTex, gFileSelCheckBrightnessFRATex, gFileSelCheckBrightnessENGTex, gFileSelCheckBrightnessCHITex },
+      { 128, 128, 128, 128, 96 }, 16 },
     { { gFileSelLanguageENGTex, gFileSelLanguageGERTex, gFileSelLanguageFRATex, gFileSelLanguageENGTex, gFileSelLanguageENGTex }, { 64, 64, 64, 64, 64 }, 16 },
 };
 
 static OptionsMenuTextureInfo gOptionsMenuSettings[] = {
-    { { gFileSelStereoENGTex, gFileSelStereoENGTex, gFileSelStereoFRATex, gFileSelStereoENGTex, gFileSelStereoENGTex }, { 48, 48, 48, 48, 48 }, 16 },
-    { { gFileSelMonoENGTex, gFileSelMonoENGTex, gFileSelMonoENGTex, gFileSelMonoENGTex, gFileSelMonoENGTex }, { 48, 48, 48, 48, 48 }, 16 },
-    { { gFileSelHeadsetENGTex, gFileSelHeadsetGERTex, gFileSelHeadsetFRATex, gFileSelHeadsetENGTex, gFileSelHeadsetENGTex }, { 48, 48, 48, 48, 48 }, 16 },
-    { { gFileSelSurroundENGTex, gFileSelSurroundENGTex, gFileSelSurroundENGTex, gFileSelSurroundENGTex, gFileSelSurroundENGTex }, { 48, 48, 48, 48, 48 }, 16 },
-    { { gFileSelSwitchENGTex, gFileSelSwitchGERTex, gFileSelSwitchFRATex, gFileSelSwitchENGTex, gFileSelSwitchENGTex }, { 48, 80, 48, 48, 48 }, 16 },
-    { { gFileSelHoldENGTex, gFileSelHoldGERTex, gFileSelHoldFRATex, gFileSelHoldENGTex, gFileSelHoldENGTex }, { 48, 80, 48, 48, 48 }, 16 },
+    { { gFileSelStereoENGTex, gFileSelStereoENGTex, gFileSelStereoFRATex, gFileSelStereoENGTex, gFileSelStereoCHITex }, { 48, 48, 48, 48, 48 }, 16 },
+    { { gFileSelMonoENGTex, gFileSelMonoENGTex, gFileSelMonoENGTex, gFileSelMonoENGTex, gFileSelMonoCHITex }, { 48, 48, 48, 48, 48 }, 16 },
+    { { gFileSelHeadsetENGTex, gFileSelHeadsetGERTex, gFileSelHeadsetFRATex, gFileSelHeadsetENGTex, gFileSelHeadsetCHITex }, { 48, 48, 48, 48, 48 }, 16 },
+    { { gFileSelSurroundENGTex, gFileSelSurroundENGTex, gFileSelSurroundENGTex, gFileSelSurroundENGTex, gFileSelSurroundCHITex }, { 48, 48, 48, 48, 48 }, 16 },
+    { { gFileSelSwitchENGTex, gFileSelSwitchGERTex, gFileSelSwitchFRATex, gFileSelSwitchENGTex, gFileSelSwitchCHITex }, { 48, 80, 48, 48, 48 }, 16 },
+    { { gFileSelHoldENGTex, gFileSelHoldGERTex, gFileSelHoldFRATex, gFileSelHoldENGTex, gFileSelHoldCHITex }, { 48, 80, 48, 48, 48 }, 16 },
     { { gFileSelLangEnglishENGTex, gFileSelLangEnglishENGTex, gFileSelLangEnglishENGTex, gFileSelLangEnglishENGTex, gFileSelLangEnglishENGTex }, { 48, 48, 48, 48, 48 }, 16 },
     { { gFileSelLangDeutschGERTex, gFileSelLangDeutschGERTex, gFileSelLangDeutschGERTex, gFileSelLangDeutschGERTex, gFileSelLangDeutschGERTex }, { 48, 48, 48, 48, 48 }, 16 },
     { { gFileSelLangFrancaisFRATex, gFileSelLangFrancaisFRATex, gFileSelLangFrancaisFRATex, gFileSelLangFrancaisFRATex, gFileSelLangFrancaisFRATex }, { 48, 48, 48, 48, 48 }, 16 },

@@ -1784,6 +1784,5 @@ static const ALIGN_ASSET(2) char gZoraTunicItemNameCHITex[] = dgZoraTunicItemNam
 
 #define dgZorasSapphireItemNameCHITex "__OTR__textures/item_name_static/gZorasSapphireItemNameCHITex"
 static const ALIGN_ASSET(2) char gZorasSapphireItemNameCHITex[] = dgZorasSapphireItemNameCHITex;
-
 // #endregion
 #endif // TEXTURES_ITEM_NAME_STATIC_H
