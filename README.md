@@ -3,21 +3,14 @@
 
 # Simplified Chinese Support
 
-This fork adds full Simplified Chinese language support to Ship of Harkinian 9.2.3,
-replacing untranslated item names, map labels, and action prompts with Chinese
-textures from the iQue Player release.
+This fork adds full Simplified Chinese language support to Ship of Harkinian, replacing all possible untranslated textures with Chinese textures from the iQue Player release.
 
 ### Features
 
-- **Chinese message text** — 2115 messages from the iQue ROM, calibrated against
-  the N64 Simplified Chinese text dump
-- **Chinese UI textures** — action labels (29), item names (112), map labels (34),
-  dungeon titles (10), place title cards (57), and boss title cards (10),
-  all replaced with iQue-original Chinese versions
-- **All-CharChn CJK font** — 2183 custom 16×16 I4 glyphs rendered from
-  Source Han Sans SC, covering the complete iQue character set + extended range
-- **HD texture packs** — 128×128 RGBA32 HD font glyphs and UI textures,
-  compatible with [OoT-Reloaded](https://github.com/GhostlyDark/OoT-Reloaded)
+- **Chinese message text** — 2115 messages from the iQue ROM, calibrated against the N64 Simplified Chinese text dump
+- **Chinese UI textures** — 318 textures covering action labels (29), item names (112), map labels (34+10), pause menu labels (21), file select labels (35), place/boss title cards (67), game over screen (4), end-title overlays (3), title logo (1), Navi C-Up label (1), and SOLD OUT icon (1), all replaced with iQue-original Chinese versions
+- **All-CharChn CJK font** — 2183 custom 16×16 I4 glyphs rendered from Source Han Sans SC, covering the complete iQue character set + extended range
+- **HD texture packs** — 128×128 RGBA32 HD font glyphs and UI textures, compatible with [OoT-Reloaded](https://github.com/GhostlyDark/OoT-Reloaded)
 
 ### Quick Start
 
@@ -42,20 +35,17 @@ textures from the iQue Player release.
 
 ### Important Note
 
-This Chinese localization has only been tested with the **NTSC (US)** version of
-the ROM. Other regional versions may have untested differences in text IDs or
-texture layouts. Please use an NTSC-US ROM for the best experience.
+This Chinese localization has only been tested with the **NTSC (US)** version of the ROM. Other regional versions may work but can have untested behaviors. If you find any bug with your own version, feel free to start a [issue](https://github.com/wonderfulnx/Shipwright-CN/issues).
 
 ### Tools (`scripts/chinese/`)
 
 | Directory | Purpose |
 |-----------|---------|
 | `message/` | Message extraction, calibration, and asset code generation |
-| `texture_extract/` | iQue ROM texture extraction (XML definitions + N64 format decoders) |
+| `texture_extract/` | iQue ROM texture extraction + auto OTR declarations |
 | `hd_textures/` | HD texture sources and O2R packer for UI textures |
 
-See `scripts/chinese/message/README.md` for the full control-code reference
-and calibration workflow.
+See `scripts/chinese/texture_extract/README.md` for the extraction workflow and `scripts/chinese/message/README.md` for the full control-code reference.
 
 ### Acknowledgments
 
@@ -67,6 +57,8 @@ This implementation builds upon work from several projects:
 | [Xzonn/NintendoOfficialChineseGames](https://github.com/Xzonn/NintendoOfficialChineseGames) | N64 Simplified Chinese text dump used for message calibration |
 | [zeldaret/Z64Utils](https://github.com/zeldaret/Z64Utils) | iQue ROM message extraction |
 | [GhostlyDark/OoT-Reloaded](https://github.com/GhostlyDark/OoT-Reloaded) | HD font glyph style reference (gray210) and O2R format compatibility |
+
+**----------------------Below is the original Shipwright README----------------------**
 
 ## Website
 

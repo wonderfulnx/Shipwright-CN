@@ -22,7 +22,6 @@ Output goes to `soh/assets/custom/<category>/<File>/` — one folder per `<File>
 1. Place decompressed `.bin` files in `raw/`
 2. Run extraction: `uv run texture_extract/extract.py`
 3. Run declarations: `uv run texture_extract/append_chi_decls.py`
-4. Re-run `uv run message/generate_assets.py` to refresh font/message data
 
 ## Prerequisites: Dumping Binary Files from ROM
 

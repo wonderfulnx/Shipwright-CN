@@ -8,16 +8,21 @@ Ship of Harkinian.
 ```
 scripts/chinese/message/
 ├── README.md
-├── calibrate_messages.py      # Compare NTSC / iQue / OOT dump → Excel
-├── dump_ique_messages.py      # Split iQue ROM binary → message_raw_cn.txt
-├── dump_nes_messages.py       # Split OTR binary → message_raw_ntsc.txt
-├── pyproject.toml
+├── calibrate_messages.py        # Compare NTSC / iQue / OOT dump → Excel
+├── dump_ique_messages.py        # Split iQue ROM binary → message_raw_cn.txt
+├── dump_nes_messages.py         # Split OTR binary → message_raw_ntsc.txt, message_raw_typepos.txt
+├── generate_assets.py           # Generate all assets need for displaying CN messages
+├── generate_hd_font_o2r.py      # Generate high res CN font
 ├── charmap/
-│   ├── charmap_chn.txt        # iQue CN: char → 2-byte code (2196 entries)
-│   └── charmap_ntsc.txt       # NES: extended Latin + button icons (44 entries)
-└── txt/
-    ├── message_raw_ntsc.txt   # 2116 English messages (OTR-extracted)
+│   ├── charmap_chn.txt          # iQue CN: char → 2-byte code (2196 entries)
+│   └── charmap_ntsc.txt         # NES: extended Latin + button icons (44 entries)
+├── txt/
+    ├── message_raw_ntsc.txt     # 2116 English messages (OTR-extracted)
+    ├── message_raw_typepos.txt  # typepos corresponding each message (from ntsc)
     └── message_raw_cn_from_ique.txt  # 2115 Chinese messages (iQue ROM, corrected)
+└── raw/
+    ├── cn_message_data_static.bin    # iQue CN messages binary
+    └── ntsc_nes_message_data_static  # NTSC English messages binary, acquired using Z64Utils
 ```
 
 ---
@@ -100,10 +105,10 @@ All control codes are in range `0x01`–`0x1F`. `0x03` is unused/invalid.
 
 ### `dump_nes_messages.py`
 
-Extracts English messages from an OTR binary resource file.
+Extracts English messages and typepos from an binary resource file.
 
-**Input:** OTR resource at `text/nes_message_data_static/ntsc_nes_message_data_static`
-(from `.otr` archive).
+**Input:** Binary resource at `raw/ntsc_nes_message_data_static`
+(acquired from NTSC ROM using [Z64Utils](https://github.com/zeldaret/Z64Utils)).
 
 **Binary format:**
 
@@ -123,9 +128,10 @@ Factory Data:
     [msgLength]   message body bytes
 ```
 
-**Output:** `txt/message_raw_ntsc.txt` — one message per line:
+**Output:** `txt/message_raw_ntsc.txt` and `txt/message_raw_typepos.txt` — one message per line:
 ```
-0x0001 = { 0x1A, 0x13, 0x2D, 0x08, 0x59, 0x6F, 0x75, ... };
+0x0001 = { 0x1A, 0x13, 0x2D, ... }; # message
+0x0001 = 0x23;                      # typepos
 ```
 
 **Relevant SoH source:** `OTRExporter/OTRExporter/TextFactory.cpp:8-31`,
@@ -152,16 +158,11 @@ with textIds aligned by position to the NTSC reference.
 - Built-in typo correction dictionary (`CORRECTIONS`) for known iQue ROM errata
 - NTSC textId alignment (position-based mapping)
 
-**Usage:**
-```bash
-uv run python dump_ique_messages.py [input.bin] [output.txt] [ntsc_ref.txt]
-```
-
 ---
 
 ### `calibrate_messages.py`
 
-Generates an Excel workbook comparing NTSC and CN message data side-by-side.
+Generates an Excel workbook comparing NTSC, CN and another online CN dump message data side-by-side.
 
 **Inputs:**
 
@@ -196,35 +197,38 @@ word-choice differences before comparing, for example:
 - `或` ↔ `和` (or / and)
 - `他` ↔ `她` (he / she)
 
-**Usage:**
-```bash
-uv run python calibrate_messages.py
-# Output: message_calibration.xlsx
-```
-
 ---
 
 ## Typical Workflow
 
-1. Extract English messages from OTR:
+1. Extract English messages and typepos from binary:
    ```bash
-   uv run python dump_nes_messages.py <otr_extracted_binary> txt/message_raw_ntsc.txt
+   # in /scripts/chinese/
+   uv run message/dump_nes_messages.py
    ```
 
-2. Extract Chinese messages from iQue ROM:
+2. Extract Chinese messages from binary:
    ```bash
-   uv run python dump_ique_messages.py cn_message_data_static.bin \
-       txt/message_raw_cn_from_ique.txt txt/message_raw_ntsc.txt
+   # in /scripts/chinese/
+   uv run message/dump_ique_messages.py
    ```
 
 3. Run calibration:
    ```bash
-   uv run python calibrate_messages.py
+   # in /scripts/chinese/
+   uv run message/calibrate_messages.py
    ```
 
 4. Open `message_calibration.xlsx`, review red (control code) and yellow
    (character) mismatches. For systematic iQue typos, add entries to the
    `CORRECTIONS` dictionary in `dump_ique_messages.py` and re-run steps 2–3.
+
+5. Generate all required assets:
+   ```bash
+   # in /scripts/chinese/
+   uv run message/generate_assets.py
+   uv run message/generate_hd_font_o2r.py
+   ```
 
 ## Dependencies
 
